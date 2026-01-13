@@ -50,7 +50,18 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget buildForecastWidget(Forecast forecast){
-    return Text(forecast.name);
+    return Center(
+      child: Column(
+            children: [
+              Text(forecast.name),
+              Text(forecast.temperature.toString()),
+              Text(forecast.windSpeed),
+              Text(forecast.shortForecast),
+              Text(forecast.detailedForecast),
+              Text(forecast.isDaytime? "Day" : "Night"),
+            ],
+          ),
+    );
   }
 
   @override
