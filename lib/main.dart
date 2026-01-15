@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import './models/forecast.dart';
 
-import './models/location.dart';  
+import './models/location.dart';
 
 // TODO:
 // Add text field and elevated button
@@ -47,36 +47,49 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _initForecasts() async {
-    
-
     Location location = await getLocationFromString("Miami");
 
-    List<Forecast> forecasts = await getForecastsByLocation(location.latitude, location.longitude);
-    
+    List<Forecast> forecasts =
+        await getForecastsByLocation(location.latitude, location.longitude);
+
     setState(() {
       _location = location;
       _forecasts = forecasts;
     });
   }
 
+
+
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: 
-          SizedBox(
-            width: 500,
-            child: Column(
-              children: [
-                Text(_location != null ? "${_location?.city}, ${_location?.state} ${_location?.zip}" : "No Location..."),
-                Row(children: _forecasts.map((forecast)=> ForecastWidget(forecast: forecast)).toList()),
-              ],
+      body: SizedBox(
+        width: 500,
+        child: Column(
+          children: [
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), labelText: 'enter place'),
             ),
-          ),
-      
+            ElevatedButton( onPressed: () {}, child: const Text('change')),
+            Text(_location != null
+                ? "${_location?.city}, ${_location?.state} ${_location?.zip}"
+                : "No Location..."),
+            Row(
+                children: _forecasts
+                    .map((forecast) => ForecastWidget(forecast: forecast))
+                    .toList()),
+          ],
+        ),
+      ),
     );
   }
 }
