@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
         width: 500,
         child: Column(
           children: [
-            LocationWidget(location: _location, setLocation: _setLocation),
+            LocationWidget(location: _location, setLocation: _setLocation, setLocationFromGps: _setLocationFromGps),
             SizedBox(
               width: double.infinity,
               height: 200,

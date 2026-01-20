@@ -7,11 +7,14 @@ class LocationWidget extends StatelessWidget {
     super.key,
     required Location? location,
     required this.setLocation,
+    required this.setLocationFromGps,
   }) : _location = location;
 
   final Location? _location;
+  
   final TextEditingController _locationController = TextEditingController();
   final void Function(String) setLocation;
+  final void Function() setLocationFromGps;
 
   void _setLocation() {
     setLocation(_locationController.text);
@@ -19,16 +22,32 @@ class LocationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-            controller: _locationController,
-            decoration: InputDecoration(labelText: "Enter Location")),
-        ElevatedButton(onPressed: _setLocation, child: Text("Set Location")),
-        Text(_location != null
-            ? "${_location?.city}, ${_location?.state} ${_location?.zip}"
-            : "No Location..."),
-      ],
-    );
-  }
+  return Column(
+    children: [
+      TextField(
+        controller: _locationController,
+        decoration: InputDecoration(labelText: "Enter Location"),
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            style: ButtonStyle(
+              overlayColor: MaterialStateProperty.all(Colors.red),
+            ),
+            onPressed: _setLocation,
+            child: Text("Set Location"),
+          ),
+          ElevatedButton(
+            onPressed: setLocationFromGps,
+            child: Text("Set Location gps"),
+          ),
+        ],
+      ),
+      Text(_location != null
+          ? "${_location.city}, ${_location.state} ${_location.zip}"
+          : "No Location..."),
+    ],
+  );
+}
 }
