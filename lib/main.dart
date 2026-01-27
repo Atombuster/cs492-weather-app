@@ -70,6 +70,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   void _setLocation(String locationString) async {
+    if (locationString == ""){
+      setState(() {
+      _location = null;
+    });
+      return;
+    }
     Location? location = await getLocationFromString(locationString);
     _getForecasts(location);
     setState(() {

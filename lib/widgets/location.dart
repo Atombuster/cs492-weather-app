@@ -48,6 +48,13 @@ class _LocationWidgetState extends State<LocationWidget> {
     
   }
 
+  void _clearLocation() {
+
+    widget.setLocation('');
+    
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -57,19 +64,30 @@ class _LocationWidgetState extends State<LocationWidget> {
           TextField(
               controller: _locationController,
               decoration: InputDecoration(labelText: "Enter Location", errorText: _showError ? "Error: Must Type Location" : null)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                    onPressed: _setLocation, child: Text("Set Location")),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                        onPressed: _setLocation, child: Text("Set Location")),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                        onPressed: widget.setLocationFromGps,
+                        child: Text("Set Location from GPS")),
+                  ),
+                  
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                    onPressed: widget.setLocationFromGps,
-                    child: Text("Set Location from GPS")),
+                    onPressed: _clearLocation,
+                    child: Text("Clear Location")),
               ),
             ],
           ),
