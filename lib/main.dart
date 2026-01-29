@@ -62,22 +62,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     });
   }
 
-  void _setActiveForecast(Forecast forecast) {
-    setState(() {
-      _activeForecast = forecast;
-    });
-  }
-
-  void _getForecasts(Location? location) async {
-    if (location != null) {
-      List<Forecast> forecasts =
-          await getForecastsByLocation(location.latitude, location.longitude);
-      setState(() {
-        _forecasts = forecasts;
-        _activeForecast = _forecasts[0];
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
