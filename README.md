@@ -3,6 +3,13 @@
 - Try to come up with as many as possible
 - Try to complete as many as possible
 
+
+added data to datastructure
+added subdirectorys
+made a style sheet
+updated imports
+pulled out static info out of files
+
 # Mobile App Development Class: Assignment Setup
 
 Welcome to the mobile app development class! This repository will hold the weather app which we will be working on each class. 

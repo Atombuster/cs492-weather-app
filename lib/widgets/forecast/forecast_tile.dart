@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:weatherapp/providers/forecast_provider.dart';
+import 'package:weatherapp/data_structure/forecast.dart';
+import 'package:weatherapp/style/style.dart';
 
-import '../models/forecast.dart';
+
 
 class ForecastTileWidget extends StatelessWidget {
   const ForecastTileWidget({super.key, required this.forecast});
@@ -15,7 +16,7 @@ class ForecastTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final accentColor = forecast.isDaytime ? Colors.orange : Colors.indigo;
+    final accentColor = forecast.isDaytime ? cardColorOne : cardColorTwo;
 
     return InkWell(
       onTap: () {

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import 'package:weatherapp/models/location.dart';
+import 'package:weatherapp/data_structure/location.dart';
 
 class LocationProvider extends ChangeNotifier {
   Location? location;

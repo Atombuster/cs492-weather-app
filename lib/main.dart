@@ -3,8 +3,9 @@ import 'package:provider/provider.dart';
 
 import 'package:weatherapp/providers/forecast_provider.dart';
 import 'package:weatherapp/providers/location_provider.dart';
-import 'package:weatherapp/widgets/weather_app_bar.dart';
-import 'package:weatherapp/widgets/weather_body.dart';
+import 'package:weatherapp/widgets/weather_app/weather_app_bar.dart';
+import 'package:weatherapp/widgets/weather_app/weather_body.dart';
+import 'package:weatherapp/style/style.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
@@ -18,12 +19,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'CS492',
+      title: classTitle,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+        colorScheme: ColorScheme.fromSeed(seedColor: maincolor),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'CS492'),
+      home: MyHomePage(title: classTitle),
     );
   }
 }
