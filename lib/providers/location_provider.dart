@@ -33,7 +33,7 @@ class LocationProvider extends ChangeNotifier {
 
     notifyListeners();
   }
-
+//
   void deleteLocation(String zip){
     savedLocations.remove(zip);
     storeSavedLocations();
