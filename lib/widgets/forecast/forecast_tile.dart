@@ -19,7 +19,7 @@ class ForecastTileWidget extends StatelessWidget {
 
     final semanticsString =
         "${forecast.name}, ${forecast.shortForecast}, ${forecast.detailedForecast}";
-
+ 
     return Semantics(
       label: semanticsString,
       child: InkWell(
