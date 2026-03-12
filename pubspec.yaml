@@ -69,6 +69,11 @@ flutter:
     - assets/icons/
     - assets/sql/
     - .env
+
+  fonts:
+    - family: CustomFont
+      fonts:
+       - asset: fonts/Pormask2.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

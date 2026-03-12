@@ -23,6 +23,7 @@ class WeatherAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
+          fontFamily: 'CustomFont',
           letterSpacing: 0.8,
         ),
       ),
