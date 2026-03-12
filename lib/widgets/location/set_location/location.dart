@@ -55,32 +55,35 @@ class _LocationWidgetState extends State<LocationWidget> {
   Widget build(BuildContext context) {
     final locationProvider = context.watch<LocationProvider>();
 
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Column(
-        children: [
-          TextField(
-            controller: _locationController,
-            decoration: InputDecoration(
-              labelText: "Enter Location",
-              errorText: _showError ? "Error: Must Type Location" : null,
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: _locationController,
+              decoration: InputDecoration(
+                labelText: "Enter Location",
+                errorText: _showError ? "Error: Must Type Location" : null,
+              ),
             ),
-          ),
-          LocationButtons(
-            setLocation: _setLocation,
-            setLocationFromGps: _locationActions.setLocationFromGps,
-            clearLocation: _clearLocation,
-          ),
-          Text(
-            locationProvider.location != null
-                ? "${locationProvider.location?.city}, ${locationProvider.location?.state} ${locationProvider.location?.zip}"
-                : "No Location...",
-          ),
-          SizedBox(
+            LocationButtons(
+              setLocation: _setLocation,
+              setLocationFromGps: _locationActions.setLocationFromGps,
+              clearLocation: _clearLocation,
+            ),
+            Text(
+              locationProvider.location != null
+                  ? "${locationProvider.location?.city}, ${locationProvider.location?.state} ${locationProvider.location?.zip}"
+                  : "No Location...",
+            ),
+            SizedBox(
               height: 500,
               width: 500,
-              child: SavedLocations())
-        ],
+              child: SavedLocations(),
+            ),
+          ],
+        ),
       ),
     );
   }

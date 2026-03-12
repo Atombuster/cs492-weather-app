@@ -3,8 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:weatherapp/models/forecast.dart';
 import 'package:weatherapp/models/pexels_image.dart';
 import 'package:weatherapp/providers/forecast_provider.dart';
-import 'package:weatherapp/providers/theme_provider.dart';
 import 'package:weatherapp/widgets/forecast/detailed_forecast/detailed_forecast_text.dart';
+import 'package:weatherapp/style.dart';
+
+
 
 class DetailedForecast extends StatefulWidget {
   const DetailedForecast({super.key});
@@ -47,7 +49,7 @@ class _DetailedForecastState extends State<DetailedForecast> {
   @override
   Widget build(BuildContext context) {
     final activeForecast = context.watch<ForecastProvider>().activeForecast;
-    final themeProvider = context.read<ThemeProvider>();
+    
 
     if (activeForecast == null) {
       return SizedBox(
@@ -55,7 +57,7 @@ class _DetailedForecastState extends State<DetailedForecast> {
         child: Center(
           child: Text(
             'Select a forecast to see details',
-            style: TextStyle(color: themeProvider.grey),
+            style: TextStyle(color: grey),
           ),
         ),
       );

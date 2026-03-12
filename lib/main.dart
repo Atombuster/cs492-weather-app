@@ -7,14 +7,15 @@ import 'package:weatherapp/providers/theme_provider.dart';
 import 'package:weatherapp/widgets/weather_ui/weather_app_bar.dart';
 import 'package:weatherapp/widgets/weather_ui/weather_body.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:weatherapp/style.dart';
 
 void main() async {
-    WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
-    try {
-      await dotenv.load(fileName: ".env"); // Load environment variables
-    } catch (e) {
-      throw Exception('Error loading .env file: $e'); // Print error if any
-    }
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
+  try {
+    await dotenv.load(fileName: ".env"); // Load environment variables
+  } catch (e) {
+    throw Exception('Error loading .env file: $e'); // Print error if any
+  }
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => LocationProvider()),
     ChangeNotifierProvider(create: (context) => ForecastProvider()),
@@ -29,16 +30,18 @@ class MyApp extends StatelessWidget {
     final themeProvider = context.watch<ThemeProvider>();
     return MaterialApp(
       showSemanticsDebugger: false,
-      title: 'CS492',
+      title: 'My Cool Weather App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber, brightness: Brightness.light),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: mainColor, brightness: Brightness.light),
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber, brightness: Brightness.dark),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: mainColor, brightness: Brightness.dark),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'CS492'),
+      home: const MyHomePage(title: 'My Cool Weather App'),
       themeMode: themeProvider.darkMode ? ThemeMode.dark : ThemeMode.light,
     );
   }
@@ -88,11 +91,39 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     }
   }
 
+
+ 
   @override
   Widget build(BuildContext context) {
+    
+    final themeProvider = context.watch<ThemeProvider>();
     return Scaffold(
-      appBar: WeatherAppBar(title: widget.title, tabController: _tabController),
-      body: WeatherAppBody(tabController: _tabController),
-    );
+        appBar:
+            WeatherAppBar(title: widget.title, tabController: _tabController),
+        body: WeatherAppBody(tabController: _tabController),
+        endDrawer: Drawer(
+  child: ListView(
+    padding: EdgeInsets.zero,
+    children: [
+      Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Text(
+          "Settings",
+          style: TextStyle(
+            fontSize: 24,
+          ),
+        ),
+      ),
+      SwitchListTile(
+        title: Text("Dark Mode"),
+        subtitle: Text(themeProvider.darkMode ? "On" : "Off"),
+        value: themeProvider.darkMode,
+        onChanged: (value) => themeProvider.setDarkMode(value),
+        
+        dense: true,
+      ),
+    ],
+  ),
+));   
   }
 }

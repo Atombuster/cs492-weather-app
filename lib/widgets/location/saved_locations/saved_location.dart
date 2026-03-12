@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weatherapp/models/locations/location.dart';
 import 'package:weatherapp/providers/location_provider.dart';
-import 'package:weatherapp/providers/theme_provider.dart';
 import 'package:weatherapp/widgets/location/saved_locations/delete_location_button.dart';
+import 'package:weatherapp/style.dart';
+
 
 class SavedLocation extends StatelessWidget {
   const SavedLocation({
@@ -16,7 +17,6 @@ class SavedLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locationProvider = context.watch<LocationProvider>();
-    final themeProvider = context.read<ThemeProvider>();
 
     void setLocation() {
       locationProvider.setLocation(location);
@@ -51,7 +51,7 @@ class SavedLocation extends StatelessWidget {
                       "${location.state} ${location.zip}",
                       style: TextStyle(
                         fontSize: 14,
-                        color: themeProvider.grey,
+                        color: grey,
                       ),
                     ),
                   ],

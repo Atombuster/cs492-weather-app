@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weatherapp/models/locations/location.dart';
 import 'package:weatherapp/providers/location_provider.dart';
-import 'package:weatherapp/providers/theme_provider.dart';
+import 'package:weatherapp/style.dart';
 
 class DeleteLocationButton extends StatelessWidget {
   const DeleteLocationButton({
@@ -15,7 +15,6 @@ class DeleteLocationButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locationProvider = context.watch<LocationProvider>();
-    final themeProvider = context.watch<ThemeProvider>();
     void deleteLocation() {
       locationProvider.deleteLocation(location);
     }
@@ -25,7 +24,7 @@ class DeleteLocationButton extends StatelessWidget {
       child: IconButton(
         icon: Icon(
           Icons.delete,
-          color: themeProvider.dangerColor,
+          color: dangerColor,
         ),
         onPressed: deleteLocation,
       ),

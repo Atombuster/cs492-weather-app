@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weatherapp/models/forecast.dart';
+import 'package:weatherapp/style.dart';
 
 class DetailedForecastText extends StatelessWidget {
   const DetailedForecastText({
@@ -20,12 +21,12 @@ class DetailedForecastText extends StatelessWidget {
             activeForecast.name,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: reportColor,
                 ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 8.0),
-            child: Divider(color: Colors.white70),
+            child: Divider(color: Color.fromARGB(255, 255, 255, 255)),
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -33,7 +34,7 @@ class DetailedForecastText extends StatelessWidget {
                 activeForecast.detailedForecast,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       height: 1.4,
-                      color: Colors.white,
+                      color: reportColor,
                     ),
               ),
             ),

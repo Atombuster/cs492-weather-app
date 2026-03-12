@@ -17,12 +17,15 @@ class LocationButtons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        LocationButton(
-            callbackFunction: setLocation, description: "Set Location"),
-        LocationButton(
-            callbackFunction: setLocationFromGps, description: "GPS"),
-        LocationButton(
-            callbackFunction: clearLocation, description: "Clear Location"),
+        Expanded(
+            child: LocationButton(
+                callbackFunction: setLocation, description: "Set Location")),
+        Expanded(
+            child: LocationButton(
+                callbackFunction: setLocationFromGps, description: "GPS")),
+        Expanded(
+            child: LocationButton(
+                callbackFunction: clearLocation, description: "Clear Location")),
       ],
     );
   }

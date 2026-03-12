@@ -14,8 +14,12 @@ class LocationButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child:
-          ElevatedButton(onPressed: callbackFunction, child: Text(description)),
+      child: ElevatedButton(
+          onPressed: callbackFunction,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(description),
+          )),
     );
   }
 }
